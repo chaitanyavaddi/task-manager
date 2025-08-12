@@ -1,0 +1,4 @@
+from supabase import create_client
+
+
+db = create_client("https://oghmblfdiijyjzkakkuu.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9naG1ibGZkaWlqeWp6a2Fra3V1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ5MjE0OTYsImV4cCI6MjA3MDQ5NzQ5Nn0.HtUPiPPN6IAgdHCk6Wnc8HxmB-6Kxj7-tXm-cV-rpZo")
