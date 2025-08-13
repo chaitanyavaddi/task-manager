@@ -159,59 +159,27 @@
 
         <!-- Tasks Grid -->
         <div class="tasks-grid">
-            <div class="task-card">
-                <h3 class="task-title">Complete project documentation</h3>
-                <p class="task-description">Write comprehensive documentation for the new feature including API endpoints and user guide.</p>
+
+            {% for task in tasks %}
+
+                                <div class="task-card">
+                <h3 class="task-title">{{ task.title }}</h3>
+                <p class="task-description">{{ task.description }}</p>
+                <p>{{ task.status }}</p>
+                <br>
                 <div class="task-actions">
-                    <button class="action-btn edit-btn">Edit</button>
+                    <button class="action-btn edit-btn"><a href="/tasks/{{ task.id }}">Edit</a></button>
                     <button class="action-btn delete-btn">Delete</button>
                 </div>
             </div>
 
-            <div class="task-card">
-                <h3 class="task-title">Review code changes</h3>
-                <p class="task-description">Review pull requests from team members and provide feedback on code quality and implementation.</p>
-                <div class="task-actions">
-                    <button class="action-btn edit-btn">Edit</button>
-                    <button class="action-btn delete-btn">Delete</button>
-                </div>
-            </div>
+            {% endfor %}
 
-            <div class="task-card">
-                <h3 class="task-title">Prepare presentation slides</h3>
-                <p class="task-description">Create slides for the upcoming client meeting including project progress and next steps.</p>
-                <div class="task-actions">
-                    <button class="action-btn edit-btn">Edit</button>
-                    <button class="action-btn delete-btn">Delete</button>
-                </div>
-            </div>
+            
+            
 
-            <div class="task-card">
-                <h3 class="task-title">Update database schema</h3>
-                <p class="task-description">Implement changes to the database structure to support new user authentication features.</p>
-                <div class="task-actions">
-                    <button class="action-btn edit-btn">Edit</button>
-                    <button class="action-btn delete-btn">Delete</button>
-                </div>
-            </div>
 
-            <div class="task-card">
-                <h3 class="task-title">Test mobile responsiveness</h3>
-                <p class="task-description">Ensure the application works correctly across different mobile devices and screen sizes.</p>
-                <div class="task-actions">
-                    <button class="action-btn edit-btn">Edit</button>
-                    <button class="action-btn delete-btn">Delete</button>
-                </div>
-            </div>
-
-            <div class="task-card">
-                <h3 class="task-title">Schedule team meeting</h3>
-                <p class="task-description">Coordinate with team members to find a suitable time for the weekly planning meeting.</p>
-                <div class="task-actions">
-                    <button class="action-btn edit-btn">Edit</button>
-                    <button class="action-btn delete-btn">Delete</button>
-                </div>
-            </div>
+            
         </div>
     </div>
 </body>

@@ -18,7 +18,29 @@ def get_loggedin_user(request: Request):
 @router.get('/dashboard')
 def show_dashboard(request: Request):
     if get_loggedin_user(request):
-        return templates.TemplateResponse("dashboard.html", {'request': request}) 
+        result = db.table('tasks').select("*").execute()
+        print(result.data)
+        if result.data:
+            return templates.TemplateResponse("dashboard.html", {'request': request, 'tasks': result.data}) 
+
+@router.get('/tasks/{task_id}')
+def show_task(request: Request, task_id):
+    if get_loggedin_user(request):
+        result = db.table('tasks').select('*').eq('id', task_id).execute()
+        if result.data:
+            return templates.TemplateResponse("edit_task.html", {'request': request, 'task': result.data[0]})
+
+@router.post('/task/{task_id}')
+def show_task(request: Request, task_id , taskTitle = Form(...), taskDescription = Form(...), status = Form(...)):
+    if get_loggedin_user(request):
+        result = db.table('tasks').update({
+            'title': taskTitle,
+            'description': taskDescription,
+            'status': status
+        }).eq('id', task_id).execute()
+
+        if result.data:
+            return templates.TemplateResponse('edit_task_success.html', {'request': request})
 
 @router.get("/task/new")
 def new_task(request: Request):
